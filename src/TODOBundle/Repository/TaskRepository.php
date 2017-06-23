@@ -10,4 +10,17 @@ namespace TODOBundle\Repository;
  */
 class TaskRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function saverObject($object)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($object);
+        $em->flush();
+    }
+
+    public function removeObject($object)
+    {
+        $em = $this->getEntityManager();
+        $em->remove($object);
+        $em->flush();
+    }
 }

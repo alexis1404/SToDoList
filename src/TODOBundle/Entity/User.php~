@@ -4,7 +4,7 @@ namespace TODOBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use TODOBundle\Entity\Task;
+
 /**
  * User
  *
@@ -26,8 +26,6 @@ class User
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
      */
     private $name;
 
@@ -36,11 +34,9 @@ class User
      */
     private $tasks;
 
-    public function __construct($name)
+    public function __construct()
     {
         $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->name = $name;
-
     }
 
     /**
@@ -78,49 +74,5 @@ class User
     }
 
 
-
-    /**
-     * Add task
-     *
-     * @param \TODOBundle\Entity\Task $task
-     *
-     * @return User
-     */
-    public function addTask(\TODOBundle\Entity\Task $task)
-    {
-        $this->tasks[] = $task;
-
-        return $this;
-    }
-
-    /**
-     * Remove task
-     *
-     * @param \TODOBundle\Entity\Task $task
-     */
-    public function removeTask(\TODOBundle\Entity\Task $task)
-    {
-        $this->tasks->removeElement($task);
-    }
-
-    /**
-     * Get tasks
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTasks()
-    {
-        return $this->tasks;
-    }
-
-    public function createNewTask($name)
-    {
-        $task = new Task($name);
-
-        $task->setExecutor($this);
-
-        $this->addTask($task);
-
-        return $task;
-    }
 }
+
