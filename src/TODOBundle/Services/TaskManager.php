@@ -3,7 +3,7 @@
 namespace TODOBundle\Services;
 
 use Doctrine\ORM\EntityManager;
-use TODOBundle\Entity\Task;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class TaskManager
 {
@@ -41,6 +41,52 @@ class TaskManager
             }
         }else{
             return 'User not found!';
+        }
+    }
+
+    public function editTask($id_task, $name, $acceptionDate, $executionDate, $status)
+    {
+        $actual_task = $this->repoTask->find($id_task);
+
+        if($actual_task) {
+
+            if($name) {
+                $actual_task->setName($name);
+            }
+            if($acceptionDate) {
+                $actual_task->setAcceptionDate(new \DateTime($acceptionDate));
+            }
+            if($executionDate) {
+                $actual_task->setExecutionDate(new \DateTime($executionDate));
+            }
+            if($status) {
+                $actual_task->setStatus(true);
+            }else{
+                $actual_task->setStatus(false);
+            }
+
+            $errorsLog = $this->otherServices->validator($actual_task);
+            if ($errorsLog) {
+                return ['success' => false, 'errorsLog' => $errorsLog];
+            } else {
+                $this->repoTask->saverObject($actual_task);
+                return ['success' => true, 'errorsLog' => false];
+            }
+        }else{
+            return 'Task not found!';
+        }
+
+    }
+
+    public function deleteTask($id_task)
+    {
+        $actual_task = $this->repoTask->find($id_task);
+
+        if($actual_task){
+            $this->repoTask->removeObject($actual_task);
+            return 'Task removed';
+        }else{
+            return 'Task not found';
         }
     }
 }

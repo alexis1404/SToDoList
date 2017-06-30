@@ -48,7 +48,7 @@ class Task
     private $executionDate;
 
     /**
-     * @var bool
+     * @var boolean
      *
      * @ORM\Column(name="status", type="boolean")
      * @Assert\Type("boolean")
@@ -124,7 +124,7 @@ class Task
      */
     public function getAcceptionDate()
     {
-        return $this->acceptionDate;
+        return date_format($this->acceptionDate, 'Y-m-d H:i:s');
     }
 
     /**
@@ -148,7 +148,12 @@ class Task
      */
     public function getExecutionDate()
     {
-        return $this->executionDate;
+        if($this->executionDate){
+            return date_format($this->executionDate, 'Y-m-d H:i:s');
+        }else{
+            return null;
+        }
+
     }
 
     /**

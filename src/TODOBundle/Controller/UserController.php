@@ -44,7 +44,7 @@ class UserController extends Controller
     Valid JSON:
 
     {
-    "name": "test_person"
+    "user_name": "test_person"
     }
     */
     public function createNewUserAction(Request $request)
@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $user_data = json_decode($content, true);
 
-        return new JsonResponse($this->get('user_manager')->createNewUser($user_data['name']));
+        return new JsonResponse($this->get('user_manager')->createNewUser($user_data['user_name']));
     }
 
     /**
@@ -71,7 +71,7 @@ class UserController extends Controller
 
     {
     "id": 1
-    "name": "test_person"
+    "user_name": "test_person"
     }
     */
     public function editUserAction(Request $request)
@@ -85,7 +85,7 @@ class UserController extends Controller
 
         $user_data = json_decode($content, true);
 
-        return new JsonResponse($this->get('user_manager')->editUser($user_data['id'], $user_data['name']));
+        return new JsonResponse($this->get('user_manager')->editUser($user_data['id'], $user_data['user_name']));
     }
 
     /**
