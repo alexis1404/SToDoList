@@ -6,10 +6,10 @@ Ext.define('front_src.store.Users', {
         type: 'ajax',
         batchActions: false,
         api: {
-            read: 'http://localhost/SToDoList/web/app_dev.php/get_all_users',
-            destroy: 'http://localhost/SToDoList/web/app_dev.php/delete_user',
-            create:  'http://localhost/SToDoList/web/app_dev.php/create_user',
-            update: 'http://localhost/SToDoList/web/app_dev.php/edit_user'
+            read: '/SToDoList/get_all_users',
+            destroy: '/SToDoList/delete_user',
+            create:  '/SToDoList/create_user',
+            update: '/SToDoList/edit_user'
         },
         reader: {
             type: 'json',

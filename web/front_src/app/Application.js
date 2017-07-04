@@ -16,6 +16,9 @@ Ext.define('front_src.Application', {
     
     launch: function () {
         // TODO - Launch the application
+        var buttonLoadAllTask = Ext.get('addNewTaskButton');
+        buttonLoadAllTask.hide();
+
     },
 
     onAppUpdate: function () {

@@ -13,7 +13,19 @@ Ext.define('front_src.view.Tasks.TasksGrid', {
     }],
 
     tbar: [
-
+        {
+            xtype: 'button',
+            text: 'Save all changes',
+            name: 'saveChangesButton_1',
+            handler: 'saveAllChangesInTasksGrid'
+        },
+        {
+            xtype: 'button',
+            text: 'Add new task',
+            name: 'addNewTask',
+            handler: 'addNewTaskAction',
+            id: 'addNewTaskButton'
+        }
     ],
 
     columns: [{
@@ -31,7 +43,7 @@ Ext.define('front_src.view.Tasks.TasksGrid', {
             dataIndex: 'acceptionDate',
             xtype:'datecolumn',
             format: 'd/m/Y',
-            width: '25%',
+            width: '15%',
             editor: {
                 xtype: 'datefield',
                 allowBlank: false
@@ -42,10 +54,15 @@ Ext.define('front_src.view.Tasks.TasksGrid', {
             dataIndex: 'executionDate',
             xtype:'datecolumn',
             format: 'd/m/Y',
-            width: '25%',
+            width: '15%',
             editor: {
                 xtype: 'datefield'
             }
+        },
+        {
+            header: 'Executor',
+            dataIndex: 'executor',
+            flex: 1
         },
         {
             header: 'Task status',
@@ -59,6 +76,15 @@ Ext.define('front_src.view.Tasks.TasksGrid', {
                 xtype: 'checkbox',
                 checked: false
             }
+        },
+        {
+            xtype: 'actioncolumn',
+            flex: 1,
+            header: 'DEL',
+            items: [{
+                icon: 'images/delete.png',
+                handler: 'del_task'
+            }]
         }
     ]
 });

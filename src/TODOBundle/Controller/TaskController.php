@@ -31,7 +31,8 @@ class TaskController extends Controller
                 'name' => $value->getName(),
                 'acceptionDate' => $value->getAcceptionDate(),
                 'executionDate' => $value->getExecutionDate(),
-                'status' => $value->getStatus()
+                'status' => $value->getStatus(),
+                'executor' => $value->getExecutor()->getName()
             ];
 
             $row++;
@@ -41,18 +42,17 @@ class TaskController extends Controller
     }
 
     /**
-     * @Route("/create_task", name="create_task")
+     * @Route("/create_task/{id_executor}", name="create_task")
      * @Method("POST")
      */
     /*
     Valid JSON:
 
     {
-    "name": "name_task",
-    "executor_id": 2 (executor`s ID)
+    "name": "name_task"
     }
     */
-    public function createTaskAction(Request $request)
+    public function createTaskAction(Request $request, $id_executor)
     {
         $content = $request->getContent();
 
@@ -63,7 +63,7 @@ class TaskController extends Controller
 
         $taskData = json_decode($content, true);
 
-        return new JsonResponse($this->get('task_manager')->createTask($taskData['name'], $taskData['executor_id']));
+        return new JsonResponse($this->get('task_manager')->createTask($taskData['name'], $id_executor));
     }
 
     /**

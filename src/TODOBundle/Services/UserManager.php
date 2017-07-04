@@ -63,4 +63,15 @@ class UserManager
             return 'User not found!';
         }
     }
+
+    public function getUserTasks($idUser)
+    {
+        $actual_user = $this->repoUser->find($idUser);
+
+        if($actual_user){
+            return $actual_user->getTasks();
+        }else{
+            return false;
+        }
+    }
 }

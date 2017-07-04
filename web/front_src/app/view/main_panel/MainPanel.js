@@ -13,25 +13,26 @@ Ext.define('front_src.view.main_panel.MainPanel', {
 
     items:[
         {
-            title: 'Tab 1',
+            title: 'TASK LIST',
             items: [
                 {
                     xtype: 'usersGrid',
                     style: 'border: 1px double #1E90FF',
-                    width: 300,
+                    width: 500,
                     height: 300
                 },
                 {
                     xtype: 'tasksGrid',
                     style: 'border: 1px double #1E90FF',
-                    width: 1000,
+                    width: 1300,
                     height: 300
                 }
             ]
         },
         {
-            title: 'Tab 2',
-            html: 'This is tab 2 content.'
+            title: 'DISCKLAIMER',
+            html: '<h1 style="font-size: 17px">Этот фронт ни в коем случае не является демонстрацией труЪ-кода на Extjs, а лишь ' +
+            'выполняет функцию базового view для серверного кода на Symfony.</h1>'
         }
     ]
 });

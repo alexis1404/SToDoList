@@ -17,6 +17,9 @@ Ext.define('front_src.model.Task', {
         },
         {
             name: 'status'
+        },
+        {
+            name: 'executor'
         }
     ]
 });

@@ -113,4 +113,37 @@ class UserController extends Controller
 
         return new JsonResponse($this->get('user_manager')->deleteUser($user_data['id']));
     }
+
+    /**
+     * @Route("/get_user_tasks/{id_user}", name="get_user_tasks")
+     * @Method("GET")
+     */
+    public function getUserTasks($id_user)
+    {
+        $userTasks = $this->get('user_manager')->getUserTasks($id_user);
+
+        if($userTasks) {
+
+            $result = ['tasks' => []];
+
+            $row = 0;
+
+            foreach ($userTasks as $value) {
+                $result['tasks'][$row] = [
+                    'id' => $value->getId(),
+                    'name' => $value->getName(),
+                    'acceptionDate' => $value->getAcceptionDate(),
+                    'executionDate' => $value->getExecutionDate(),
+                    'status' => $value->getStatus(),
+                    'executor' => $value->getExecutor()->getName()
+                ];
+
+                $row++;
+            }
+
+            return new JsonResponse($result);
+        }else{
+            return new  JsonResponse('User not found!');
+        }
+    }
 }
