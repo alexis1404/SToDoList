@@ -71,7 +71,7 @@ class UserManager
         if($actual_user){
             return $actual_user->getTasks();
         }else{
-            return false;
+            return 'User not found!';
         }
     }
 }

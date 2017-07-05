@@ -6,9 +6,9 @@ Ext.define('front_src.store.Tasks', {
         type: 'ajax',
         batchActions: false,
         api: {
-            read: '/SToDoList/get_all_tasks',
-            destroy: '/SToDoList/delete_task',
-            update: '/SToDoList/edit_task'
+            read: 'http://localhost/SToDoList/web/app_dev.php/get_all_tasks',
+            destroy: 'http://localhost/SToDoList/web/app_dev.php/delete_task',
+            update: 'http://localhost/SToDoList/web/app_dev.php/edit_task'
         },
         reader: {
             type: 'json',

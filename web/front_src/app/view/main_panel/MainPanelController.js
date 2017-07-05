@@ -75,8 +75,8 @@ Ext.define('front_src.view.main_panel.MainPanelController', {
         record = selectionModel.getSelection()[0];
 
         var store_tasks = Ext.getStore('Tasks');
-        store_tasks.getProxy().getApi().read = '/SToDoList/get_user_tasks/' + record.get('id');
-        store_tasks.getProxy().getApi().create = '/SToDoList/create_task/' + record.get('id');
+        store_tasks.getProxy().getApi().read = 'http://localhost/SToDoList/web/app_dev.php/get_user_tasks/' + record.get('id');
+        store_tasks.getProxy().getApi().create = 'http://localhost/SToDoList/web/app_dev.php/create_task/' + record.get('id');
         store_tasks.load();
 
     },
@@ -85,7 +85,7 @@ Ext.define('front_src.view.main_panel.MainPanelController', {
         var buttonLoadAllTask = Ext.get('addNewTaskButton');
         buttonLoadAllTask.hide();
         var store = Ext.getStore('Tasks');
-        store.getProxy().getApi().read = '/SToDoList/get_all_tasks';
+        store.getProxy().getApi().read = 'http://localhost/SToDoList/web/app_dev.php/get_all_tasks';
         store.load()
     },
 
