@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 05.07.17
- * Time: 14:55
- */
 
 namespace tests\TODOBundle\Controller;
 
 use TODOBundle\Services\UserManager;
 use TODOBundle\Entity\User;
-use TODOBundle\Entity\Task;
 
 
 class UserManagerTest extends \PHPUnit_Framework_TestCase
