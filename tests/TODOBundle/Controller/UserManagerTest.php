@@ -42,7 +42,7 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(['success' => true, 'errorsLog' => false], $userManager->createNewUser('name'));
     }
 
-    public function testCreateNewUserFailureObject()
+    public function testCreateNewUserInvalidObject()
     {
         $mockers = $this->getMockers();
 
@@ -78,7 +78,7 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testEditUserFailureObject()
+    public function testEditUserInvalidObject()
     {
         $mockers = $this->getMockers();
 

@@ -25,7 +25,7 @@ Ext.define('front_src.view.main_panel.MainPanel', {
                     xtype: 'tasksGrid',
                     style: 'border: 1px double #1E90FF',
                     width: 1300,
-                    height: 300
+                    height: 500
                 }
             ]
         },
